@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "course_work_3"
+version = "0.1.0"
+description = ""
+authors = ["Vladimir Blyntsev <blyncev@yandex.ru>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+pytest = "^8.1.1"
+pytest-cov = "^5.0.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+pytest--covbuild-backend = "poetry.core.masonry.api"
