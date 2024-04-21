@@ -1,6 +1,9 @@
 from funcs.format_transactions import format_transactions
-from funcs.last_5_transactions import get_operations_list
+
 def test_lenght_transactions_list():
+    """
+    Проверяет чтобы длина списка транзакций была равна 5
+    """
     assert len(format_transactions()) == 5
 
 
