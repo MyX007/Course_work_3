@@ -4,7 +4,7 @@ def get_operations_list():
     """
     Считывает данные с файла operations.json и возвращает список последних исполненных операций
     """
-    with open("/home/vladimir/PycharmProjects/Course_work_3/src/operations.json") as file:
+    with open("../src/operations.json", encoding="utf-8") as file:
         operations_list = json.load(file)
         last_executed_operations = []
         while len(last_executed_operations) != 5:
@@ -15,4 +15,4 @@ def get_operations_list():
                     pass
                 if len(last_executed_operations) == 5:
                     break
-        return last_executed_operations
+        return sorted(last_executed_operations, key=lambda x: x['date'], reverse=True)
