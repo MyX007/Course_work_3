@@ -11,29 +11,29 @@ def format_requisites():
         requisite = []
         if 'from' in i:
             sender = []
-            sender.append(i['from'].split(" "))
-            recipient.append(i['to'].split(" "))
+            sender.append(i['from'])
+            recipient.append(i['to'])
             for s in sender:
-                if s[0] == "Счет":
-                    s[1] = f"**{s[1][-4:]}"
-                    requisite.append(' '.join(s))
+                if 'Счет' in s:
+                    s = f"Счет **{s[-4:]}"
+                    requisite.append(s)
 
                 else:
-                    s[1] = f"{s[1][:4]} {s[1][5:7]}** **** {s[1][-4:]}"
-                    sender = ' '.join(s)
-                    requisite.append(' '.join(s))
+                    s = f"{s[:-12]} {s[-12:-10]}** **** {s[-4:]}"
+                    sender = s
+                    requisite.append(s)
 
         else:
-            recipient.append(i['to'].split(" "))
+            recipient.append(i['to'])
 
         for r in recipient:
-            if r[0] == "Счет":
-                r[1] = f"**{r[1][-4:]}"
-                requisite.append(' '.join(r))
+            if 'Счет' in r:
+                r = f"Счет **{r[-4:]}"
+                requisite.append(r)
 
             else:
-               r[1] = f"{r[1][:4]} {r[1][5:7]}** **** {r[1][-4:]}"
-               requisite.append(' '.join(r))
+               r = f"{r[:-12]} {r[-12:-10]}** **** {r[-4:]}"
+               requisite.append(r)
         requisites[i['id']] = ' -> '.join(requisite)
 
     return requisites
