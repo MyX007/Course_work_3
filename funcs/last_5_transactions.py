@@ -7,12 +7,14 @@ def get_operations_list():
     with open("../src/operations.json", encoding="utf-8") as file:
         operations_list = json.load(file)
         last_executed_operations = []
+        sorted_ops_list = sorted(operations_list, key=lambda x: x.get('date', ''), reverse=True)
         while len(last_executed_operations) != 5:
-            for i in operations_list[::-1]:
+            for i in sorted_ops_list:
+
                 if i['state'] == 'EXECUTED':
                     last_executed_operations.append(i)
                 else:
                     pass
                 if len(last_executed_operations) == 5:
                     break
-        return sorted(last_executed_operations, key=lambda x: x['date'], reverse=True)
+        return last_executed_operations
